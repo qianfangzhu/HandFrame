@@ -19,6 +19,7 @@ namespace Hand.Business
         /// </summary>
         public bool QueryEmployee(int empNo)
         {
+            return true;
             using (var db = new testFrameEntities())
             {
                 var test = from a in db.employee

@@ -22,3 +22,15 @@ F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.S
 F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
 F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
 F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll.config
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.pdb
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.dll
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.dll
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.dll
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.pdb
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.xml
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.xml
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
+E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb

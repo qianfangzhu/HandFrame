@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Hand.Business;
 
 namespace Hand.Web.Controllers
 {
@@ -16,7 +17,6 @@ namespace Hand.Web.Controllers
         /// <returns></returns>
         public ActionResult Login()
         {
-
             return View();
         }
 
@@ -30,6 +30,28 @@ namespace Hand.Web.Controllers
         {
 
             return View();
+        }
+
+        ///<Summary>
+        /// 
+        /// 
+        /// </Summary>
+        /// <returns></returns>
+        public int LoginConfirm()
+        {
+            int empNo = int.Parse(Request["empNo"]);
+            string pwd = Request["pwd"];
+            Employee e = new Employee();
+            if (e.QueryEmployee(empNo))
+            {
+                Response.Cookies["empNo"].Value = empNo.ToString();
+                Response.Cookies["empNo"].Expires = DateTime.Now.AddDays(1);
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

@@ -4,7 +4,7 @@
 }
 <link href="~/Content/Login/Css/reset.css" rel="stylesheet" />
 <link href="~/Content/Login/Css/style.css" rel="stylesheet" />
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <style>
     body {
         background-image: url('../../Content/Login/Image/login.jpg');
@@ -12,14 +12,45 @@
     }
 </style>
 <body>
-    <div class="page-container">
-        <h1>Login</h1>
-        <form>
-            <input type="text" name="username" class="username" placeholder="Username">
-            <input type="password" name="password" class="password" placeholder="Password">
-            <button type="submit">Login in</button>
-        </form>
-    </div>
+<div class="page-container">
+    <h1>Login</h1>
+        <input type="text" name="empNo" id="empNo" placeholder="Username">
+        <input type="password" name="pwd" id="pwd" placeholder="Password">
+        <button onclick="login()">Login</button>
+</div>
+<script>
+    function login() {
+        var empNo = $("#empNo").val();
+        var pwd = $("#pwd").val();
+        if (empNo == "" || null) {
+            $.messager.alert("提示", "请输入用户名", "info");
+            return;
+        }
+        else if (pwd == "" || null) {
+            $.messager.alert("提示", "请输密码", "info");
+            return;
+        } else {
+            $.ajax({
+                url: "/User/LoginConfirm",
+                data: { empNo: empNo, pwd: pwd },
+                type: "POST",                      
+                dataType: 'text',
+                success: function (data) {
+                    if (data == 1) {
+                        window.location.href = "/User/Index";
+                    } else if (data == 0) {
+                        $.messager.alert("提示", "用户名或密码不正确，请您重新输入！", "info");
+                    } else {
+                        alert("输入异常，请重新输入！");
+                    }
+                },
+                error: function() {
+                    alert("输入异常，请重新输入！");
+                }//错误提示
+            });
+        }
+    }
+</script>
 </body>
 
 
