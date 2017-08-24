@@ -12,7 +12,12 @@ namespace Hand.Business
     public class Employee
     {
 
+        public testFrameEntities DbEntities;
 
+        public Employee()
+        {
+            DbEntities = new testFrameEntities();
+        }
         /// <summary>
         /// 朱乾方
         /// 2017-08-23
@@ -20,9 +25,9 @@ namespace Hand.Business
         /// </summary>
         public bool QueryEmployee(int empNo,string pwd)
         {
-            using (var db = new testFrameEntities())
+            using (DbEntities)
             {
-                var test = from a in db.employee
+                var test = from a in DbEntities.employee
                            where a.emp_No == empNo
                            select a;
                 foreach (employee value in test)
