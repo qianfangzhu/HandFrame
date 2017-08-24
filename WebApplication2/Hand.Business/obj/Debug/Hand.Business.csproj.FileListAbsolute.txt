@@ -10,3 +10,15 @@ C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Busines
 C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
 C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
 C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll.config
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.pdb
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.pdb
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.xml
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.xml
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb
