@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Hand.Business;
+using Hand.Model;
 
 namespace Hand.Web.Controllers
 {
@@ -43,7 +44,7 @@ namespace Hand.Web.Controllers
             int empNo = int.Parse(Request["empNo"]);
             string pwd = Request["pwd"];
             Employee e = new Employee();
-            if (e.QueryEmployee(empNo,pwd))
+            if (e.QueryEmployee(empNo, pwd))
             {
                 Response.Cookies["empNo"].Value = empNo.ToString();
                 Response.Cookies["empNo"].Expires = DateTime.Now.AddDays(1);
@@ -53,6 +54,34 @@ namespace Hand.Web.Controllers
             {
                 return 0;
             }
+        }
+
+        public ActionResult GetEmp()
+        {
+            Employee emp = new Employee();
+            var userInfo = emp.GetEmp();
+            return Json(userInfo, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <returns></returns>
+        public string AddEmp(int? empId, employee emp)
+        {
+            string msg;
+            Employee employee = new Employee();
+            if (empId > 0)
+            {
+                employee.EditEmp(empId, emp);
+                msg = "修改成功！";
+            }
+            else
+            {
+                employee.AddEmp(emp);
+                msg = "添加成功！";
+            }
+            return msg;
         }
     }
 }

@@ -303,6 +303,10 @@
       <Project>{24797F69-6FD2-4E7A-80F4-5BF059C39C1E}</Project>
       <Name>Hand.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hand.Model\Hand.Model.csproj">
+      <Project>{348ebc62-7198-4be0-ba7f-bddf8ab29fad}</Project>
+      <Name>Hand.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
