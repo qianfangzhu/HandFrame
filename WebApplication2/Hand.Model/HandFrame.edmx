@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="testFrameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="dept_id" />
+          </Key>
+          <Property Name="dept_id" Type="int" Nullable="false" />
+          <Property Name="dept_pid" Type="int" />
+          <Property Name="dept_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="dept_pname" Type="nvarchar" MaxLength="20" />
+          <Property Name="dept_leader" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_No" Type="int" Nullable="false" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="emp_mobile" Type="varchar" MaxLength="20" />
+          <Property Name="emp_email" Type="nvarchar" MaxLength="20" />
+          <Property Name="emp_role_id" Type="int" />
+          <Property Name="emp_isvalid" Type="tinyint" />
+          <Property Name="emp_workaddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_jointime" Type="datetime" />
+          <Property Name="emp_quit" Type="datetime" />
+          <Property Name="emp_dept_id" Type="int" />
+          <Property Name="emp_post" Type="nvarchar" MaxLength="20" />
+          <Property Name="emp_pwd" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_employee_Dept">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="emp_dept_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="emp_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testFrameModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_employee_Dept" Association="Self.FK_employee_Dept">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_Role" Association="Self.FK_employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testFrameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_No" Type="Int32" Nullable="false" />
+          <Property Name="emp_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="emp_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emp_email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="emp_role_id" Type="Int32" />
+          <Property Name="emp_isvalid" Type="Byte" />
+          <Property Name="emp_workaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_jointime" Type="DateTime" Precision="3" />
+          <Property Name="emp_quit" Type="DateTime" Precision="3" />
+          <Property Name="emp_dept_id" Type="Int32" />
+          <Property Name="emp_post" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employee1" Relationship="Self.FK_employee_Dept" FromRole="employee" ToRole="employee1" />
+          <NavigationProperty Name="employee2" Relationship="Self.FK_employee_Dept" FromRole="employee1" ToRole="employee" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_employee_Role" FromRole="employee" ToRole="Role" />
+          <NavigationProperty Name="Department" Relationship="testFrameModel.FK_employee_Dept1" FromRole="employee" ToRole="Department" />
+          <Property Name="emp_pwd" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_employee_Role" FromRole="Role" ToRole="employee" />
+        </EntityType>
+        <Association Name="FK_employee_Dept">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="employee1" Type="Self.employee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="employee1">
+              <PropertyRef Name="emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="emp_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testFrameEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <AssociationSet Name="FK_employee_Dept" Association="Self.FK_employee_Dept">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="employee1" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employee_Role" Association="Self.FK_employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <EntitySet Name="Department" EntityType="testFrameModel.Department" />
+          <AssociationSet Name="FK_employee_Dept1" Association="testFrameModel.FK_employee_Dept1">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="dept_id" />
+          </Key>
+          <Property Name="dept_id" Type="Int32" Nullable="false" />
+          <Property Name="dept_pid" Type="Int32" />
+          <Property Name="dept_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dept_pname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dept_leader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employee" Relationship="testFrameModel.FK_employee_Dept1" FromRole="Department" ToRole="employee" />
+        </EntityType>
+        <Association Name="FK_employee_Dept1">
+          <End Type="testFrameModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="testFrameModel.employee" Role="employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="emp_dept_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testFrameModelStoreContainer" CdmEntityContainer="testFrameEntities">
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="testFrameModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="emp_pwd" ColumnName="emp_pwd" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_No" ColumnName="emp_No" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_mobile" ColumnName="emp_mobile" />
+                <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+                <ScalarProperty Name="emp_role_id" ColumnName="emp_role_id" />
+                <ScalarProperty Name="emp_isvalid" ColumnName="emp_isvalid" />
+                <ScalarProperty Name="emp_workaddress" ColumnName="emp_workaddress" />
+                <ScalarProperty Name="emp_jointime" ColumnName="emp_jointime" />
+                <ScalarProperty Name="emp_quit" ColumnName="emp_quit" />
+                <ScalarProperty Name="emp_dept_id" ColumnName="emp_dept_id" />
+                <ScalarProperty Name="emp_post" ColumnName="emp_post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="testFrameModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="testFrameModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="dept_leader" ColumnName="dept_leader" />
+                <ScalarProperty Name="dept_pname" ColumnName="dept_pname" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+                <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
+                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

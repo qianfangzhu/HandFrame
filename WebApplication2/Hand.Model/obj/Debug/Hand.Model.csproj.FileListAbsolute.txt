@@ -1,0 +1,9 @@
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll.config
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\Hand.Model.pdb
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\EntityFramework.dll
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\EntityFramework.xml
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
+C:\Users\hand\Documents\Visual Studio 2015\Projects\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
