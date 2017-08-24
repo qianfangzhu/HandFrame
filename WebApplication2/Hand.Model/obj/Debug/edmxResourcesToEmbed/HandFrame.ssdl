@@ -16,17 +16,17 @@
     </Key>
     <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="emp_No" Type="int" Nullable="false" />
-    <Property Name="emp_name" Type="nvarchar" MaxLength="20" />
-    <Property Name="emp_mobile" Type="varchar" MaxLength="20" />
-    <Property Name="emp_email" Type="nvarchar" MaxLength="20" />
+    <Property Name="emp_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="emp_mobile" Type="varchar" MaxLength="255" />
+    <Property Name="emp_email" Type="nvarchar" MaxLength="255" />
     <Property Name="emp_role_id" Type="int" />
-    <Property Name="emp_isvalid" Type="tinyint" />
-    <Property Name="emp_workaddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="emp_isvalid" Type="int" Nullable="false" />
+    <Property Name="emp_workaddress" Type="nvarchar" MaxLength="255" />
     <Property Name="emp_jointime" Type="datetime" />
     <Property Name="emp_quit" Type="datetime" />
     <Property Name="emp_dept_id" Type="int" />
-    <Property Name="emp_post" Type="nvarchar" MaxLength="20" />
-    <Property Name="emp_pwd" Type="nvarchar" MaxLength="64" />
+    <Property Name="emp_post" Type="nvarchar" MaxLength="255" />
+    <Property Name="emp_pwd" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

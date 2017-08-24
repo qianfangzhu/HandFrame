@@ -21,17 +21,17 @@
           </Key>
           <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="emp_No" Type="int" Nullable="false" />
-          <Property Name="emp_name" Type="nvarchar" MaxLength="20" />
-          <Property Name="emp_mobile" Type="varchar" MaxLength="20" />
-          <Property Name="emp_email" Type="nvarchar" MaxLength="20" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="emp_mobile" Type="varchar" MaxLength="255" />
+          <Property Name="emp_email" Type="nvarchar" MaxLength="255" />
           <Property Name="emp_role_id" Type="int" />
-          <Property Name="emp_isvalid" Type="tinyint" />
-          <Property Name="emp_workaddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_isvalid" Type="int" Nullable="false" />
+          <Property Name="emp_workaddress" Type="nvarchar" MaxLength="255" />
           <Property Name="emp_jointime" Type="datetime" />
           <Property Name="emp_quit" Type="datetime" />
           <Property Name="emp_dept_id" Type="int" />
-          <Property Name="emp_post" Type="nvarchar" MaxLength="20" />
-          <Property Name="emp_pwd" Type="nvarchar" MaxLength="64" />
+          <Property Name="emp_post" Type="nvarchar" MaxLength="255" />
+          <Property Name="emp_pwd" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -87,21 +87,21 @@
           </Key>
           <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="emp_No" Type="Int32" Nullable="false" />
-          <Property Name="emp_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="emp_mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="emp_email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="emp_mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emp_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="emp_role_id" Type="Int32" />
-          <Property Name="emp_isvalid" Type="Byte" />
-          <Property Name="emp_workaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_isvalid" Type="Byte" Nullable="false" />
+          <Property Name="emp_workaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="emp_jointime" Type="DateTime" Precision="3" />
           <Property Name="emp_quit" Type="DateTime" Precision="3" />
           <Property Name="emp_dept_id" Type="Int32" />
-          <Property Name="emp_post" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="emp_post" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="employee1" Relationship="Self.FK_employee_Dept" FromRole="employee" ToRole="employee1" />
           <NavigationProperty Name="employee2" Relationship="Self.FK_employee_Dept" FromRole="employee1" ToRole="employee" />
           <NavigationProperty Name="Role" Relationship="Self.FK_employee_Role" FromRole="employee" ToRole="Role" />
           <NavigationProperty Name="Department" Relationship="testFrameModel.FK_employee_Dept1" FromRole="employee" ToRole="Department" />
-          <Property Name="emp_pwd" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="emp_pwd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Role">
           <Key>

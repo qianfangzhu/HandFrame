@@ -15,8 +15,9 @@ namespace Hand.Web.Controllers
         /// 用户登录
         /// </summary>
         /// <returns></returns>
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
+            ViewBag.ReturnUrl = ReturnUrl;
             return View();
         }
 
@@ -42,7 +43,7 @@ namespace Hand.Web.Controllers
             int empNo = int.Parse(Request["empNo"]);
             string pwd = Request["pwd"];
             Employee e = new Employee();
-            if (e.QueryEmployee(empNo))
+            if (e.QueryEmployee(empNo,pwd))
             {
                 Response.Cookies["empNo"].Value = empNo.ToString();
                 Response.Cookies["empNo"].Expires = DateTime.Now.AddDays(1);
