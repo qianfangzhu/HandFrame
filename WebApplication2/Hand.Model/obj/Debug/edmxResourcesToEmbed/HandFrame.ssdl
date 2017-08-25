@@ -20,7 +20,7 @@
     <Property Name="emp_mobile" Type="varchar" MaxLength="255" />
     <Property Name="emp_email" Type="nvarchar" MaxLength="255" />
     <Property Name="emp_role_id" Type="int" />
-    <Property Name="emp_isvalid" Type="int" Nullable="false" />
+    <Property Name="emp_isvalid" Type="int" />
     <Property Name="emp_workaddress" Type="nvarchar" MaxLength="255" />
     <Property Name="emp_jointime" Type="datetime" />
     <Property Name="emp_quit" Type="datetime" />
@@ -35,7 +35,7 @@
     <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="role_name" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <Association Name="FK_employee_Dept">
+  <Association Name="FK_employee_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
     <End Role="employee" Type="Self.employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -63,7 +63,7 @@
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_employee_Dept" Association="Self.FK_employee_Dept">
+    <AssociationSet Name="FK_employee_Department" Association="Self.FK_employee_Department">
       <End Role="Department" EntitySet="Department" />
       <End Role="employee" EntitySet="employee" />
     </AssociationSet>

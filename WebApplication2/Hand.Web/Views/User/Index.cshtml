@@ -3,8 +3,7 @@
     ViewBag.Title = "人员管理";
 }
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<link href="~/Content/ui-grid.css" rel="stylesheet" />
+<link href="~/Content/ui-grid.css?v=1.0" rel="stylesheet" />
 <link href="~/Content/ui-grid-greata.css" rel="stylesheet" />
 <link href="~/Content/greata-view.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/icon.css" rel="stylesheet" />
@@ -38,8 +37,15 @@
         </div>
     </div>
 </div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/greata-config.js"></script>
+<script src="~/Scripts/angular.min.js" type="text/javascript"></script>
+<script src="~/Scripts/ui-grid.js" type="text/javascript"></script>
+<script src="~/Scripts/User/Employee.js"></script>
+
 <script>
-    window.onload = function() {
+    window.onload = function () {
         var allcookies = document.cookie;
         var cookiePos = allcookies.indexOf("empNo");   //索引的长度
 
@@ -50,14 +56,7 @@
         }
         else {
             var returnUrl = "/User/Index";
-            window.location.href = "/User/Login?ReturnUrl="+returnUrl;
+            window.location.href = "/User/Login?ReturnUrl=" + returnUrl;
         }
     }
 </script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/greata-config.js"></script>
-<script src="~/Scripts/angular.min.js" type="text/javascript"></script>
-<script src="~/Scripts/ui-grid.js" type="text/javascript"></script>
-<script src="~/Scripts/User/Employee.js"></script>
-

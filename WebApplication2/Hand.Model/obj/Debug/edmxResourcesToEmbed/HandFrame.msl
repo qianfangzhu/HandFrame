@@ -1,10 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="testFrameModelStoreContainer" CdmEntityContainer="testFrameEntities">
+  <EntityContainerMapping StorageEntityContainer="testFrameModelStoreContainer" CdmEntityContainer="testFrameEntities1">
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="testFrameModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+          <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
+          <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+          <ScalarProperty Name="dept_pname" ColumnName="dept_pname" />
+          <ScalarProperty Name="dept_leader" ColumnName="dept_leader" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="employee">
       <EntityTypeMapping TypeName="testFrameModel.employee">
         <MappingFragment StoreEntitySet="employee">
-          <ScalarProperty Name="emp_pwd" ColumnName="emp_pwd" />
           <ScalarProperty Name="emp_id" ColumnName="emp_id" />
           <ScalarProperty Name="emp_No" ColumnName="emp_No" />
           <ScalarProperty Name="emp_name" ColumnName="emp_name" />
@@ -17,6 +27,7 @@
           <ScalarProperty Name="emp_quit" ColumnName="emp_quit" />
           <ScalarProperty Name="emp_dept_id" ColumnName="emp_dept_id" />
           <ScalarProperty Name="emp_post" ColumnName="emp_post" />
+          <ScalarProperty Name="emp_pwd" ColumnName="emp_pwd" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -25,17 +36,6 @@
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="role_id" ColumnName="role_id" />
           <ScalarProperty Name="role_name" ColumnName="role_name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Department">
-      <EntityTypeMapping TypeName="testFrameModel.Department">
-        <MappingFragment StoreEntitySet="Department">
-          <ScalarProperty Name="dept_leader" ColumnName="dept_leader" />
-          <ScalarProperty Name="dept_pname" ColumnName="dept_pname" />
-          <ScalarProperty Name="dept_name" ColumnName="dept_name" />
-          <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
-          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

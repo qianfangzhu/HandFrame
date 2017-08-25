@@ -20,7 +20,7 @@ namespace Hand.Model
         public string emp_mobile { get; set; }
         public string emp_email { get; set; }
         public Nullable<int> emp_role_id { get; set; }
-        public Nullable<byte> emp_isvalid { get; set; }
+        public Nullable<int> emp_isvalid { get; set; }
         public string emp_workaddress { get; set; }
         public Nullable<System.DateTime> emp_jointime { get; set; }
         public Nullable<System.DateTime> emp_quit { get; set; }
@@ -28,9 +28,7 @@ namespace Hand.Model
         public string emp_post { get; set; }
         public string emp_pwd { get; set; }
     
-        public virtual employee employee1 { get; set; }
-        public virtual employee employee2 { get; set; }
-        public virtual Role Role { get; set; }
         public virtual Department Department { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -50,9 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hand.Enum\Hand.Enum.csproj">
+      <Project>{a273ffc9-4318-48aa-ae5b-9ffd3b2cdf3a}</Project>
+      <Name>Hand.Enum</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hand.Model\Hand.Model.csproj">
       <Project>{348ebc62-7198-4be0-ba7f-bddf8ab29fad}</Project>
       <Name>Hand.Model</Name>

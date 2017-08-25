@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="testFrameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="testFrameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="dept_id" />
@@ -25,7 +25,7 @@
           <Property Name="emp_mobile" Type="varchar" MaxLength="255" />
           <Property Name="emp_email" Type="nvarchar" MaxLength="255" />
           <Property Name="emp_role_id" Type="int" />
-          <Property Name="emp_isvalid" Type="int" Nullable="false" />
+          <Property Name="emp_isvalid" Type="int" />
           <Property Name="emp_workaddress" Type="nvarchar" MaxLength="255" />
           <Property Name="emp_jointime" Type="datetime" />
           <Property Name="emp_quit" Type="datetime" />
@@ -40,7 +40,7 @@
           <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="role_name" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK_employee_Dept">
+        <Association Name="FK_employee_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="employee" Type="Self.employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -68,7 +68,7 @@
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_employee_Dept" Association="Self.FK_employee_Dept">
+          <AssociationSet Name="FK_employee_Department" Association="Self.FK_employee_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
@@ -77,10 +77,22 @@
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testFrameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="dept_id" />
+          </Key>
+          <Property Name="dept_id" Type="Int32" Nullable="false" />
+          <Property Name="dept_pid" Type="Int32" />
+          <Property Name="dept_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dept_pname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dept_leader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_employee_Department" FromRole="Department" ToRole="employee" />
+        </EntityType>
         <EntityType Name="employee">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -91,17 +103,15 @@
           <Property Name="emp_mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="emp_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="emp_role_id" Type="Int32" />
-          <Property Name="emp_isvalid" Type="Byte" Nullable="false" />
+          <Property Name="emp_isvalid" Type="Int32" />
           <Property Name="emp_workaddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="emp_jointime" Type="DateTime" Precision="3" />
           <Property Name="emp_quit" Type="DateTime" Precision="3" />
           <Property Name="emp_dept_id" Type="Int32" />
           <Property Name="emp_post" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="employee1" Relationship="Self.FK_employee_Dept" FromRole="employee" ToRole="employee1" />
-          <NavigationProperty Name="employee2" Relationship="Self.FK_employee_Dept" FromRole="employee1" ToRole="employee" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_employee_Role" FromRole="employee" ToRole="Role" />
-          <NavigationProperty Name="Department" Relationship="testFrameModel.FK_employee_Dept1" FromRole="employee" ToRole="Department" />
           <Property Name="emp_pwd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_employee_Department" FromRole="employee" ToRole="Department" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_employee_Role" FromRole="employee" ToRole="Role" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -111,15 +121,15 @@
           <Property Name="role_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="employee" Relationship="Self.FK_employee_Role" FromRole="Role" ToRole="employee" />
         </EntityType>
-        <Association Name="FK_employee_Dept">
-          <End Role="employee" Type="Self.employee" Multiplicity="1" />
-          <End Role="employee1" Type="Self.employee" Multiplicity="0..1" />
+        <Association Name="FK_employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="employee">
-              <PropertyRef Name="emp_id" />
+            <Principal Role="Department">
+              <PropertyRef Name="dept_id" />
             </Principal>
-            <Dependent Role="employee1">
-              <PropertyRef Name="emp_id" />
+            <Dependent Role="employee">
+              <PropertyRef Name="emp_dept_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -135,56 +145,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="testFrameEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="testFrameEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Department" EntityType="Self.Department" />
           <EntitySet Name="employee" EntityType="Self.employee" />
           <EntitySet Name="Role" EntityType="Self.Role" />
-          <AssociationSet Name="FK_employee_Dept" Association="Self.FK_employee_Dept">
+          <AssociationSet Name="FK_employee_Department" Association="Self.FK_employee_Department">
+            <End Role="Department" EntitySet="Department" />
             <End Role="employee" EntitySet="employee" />
-            <End Role="employee1" EntitySet="employee" />
           </AssociationSet>
           <AssociationSet Name="FK_employee_Role" Association="Self.FK_employee_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
-          <EntitySet Name="Department" EntityType="testFrameModel.Department" />
-          <AssociationSet Name="FK_employee_Dept1" Association="testFrameModel.FK_employee_Dept1">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="employee" EntitySet="employee" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Department">
-          <Key>
-            <PropertyRef Name="dept_id" />
-          </Key>
-          <Property Name="dept_id" Type="Int32" Nullable="false" />
-          <Property Name="dept_pid" Type="Int32" />
-          <Property Name="dept_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="dept_pname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="dept_leader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="employee" Relationship="testFrameModel.FK_employee_Dept1" FromRole="Department" ToRole="employee" />
-        </EntityType>
-        <Association Name="FK_employee_Dept1">
-          <End Type="testFrameModel.Department" Role="Department" Multiplicity="0..1" />
-          <End Type="testFrameModel.employee" Role="employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="dept_id" />
-            </Principal>
-            <Dependent Role="employee">
-              <PropertyRef Name="emp_dept_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testFrameModelStoreContainer" CdmEntityContainer="testFrameEntities">
+        <EntityContainerMapping StorageEntityContainer="testFrameModelStoreContainer" CdmEntityContainer="testFrameEntities1">
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="testFrameModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+                <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+                <ScalarProperty Name="dept_pname" ColumnName="dept_pname" />
+                <ScalarProperty Name="dept_leader" ColumnName="dept_leader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="employee">
             <EntityTypeMapping TypeName="testFrameModel.employee">
               <MappingFragment StoreEntitySet="employee">
-                <ScalarProperty Name="emp_pwd" ColumnName="emp_pwd" />
                 <ScalarProperty Name="emp_id" ColumnName="emp_id" />
                 <ScalarProperty Name="emp_No" ColumnName="emp_No" />
                 <ScalarProperty Name="emp_name" ColumnName="emp_name" />
@@ -197,6 +190,7 @@
                 <ScalarProperty Name="emp_quit" ColumnName="emp_quit" />
                 <ScalarProperty Name="emp_dept_id" ColumnName="emp_dept_id" />
                 <ScalarProperty Name="emp_post" ColumnName="emp_post" />
+                <ScalarProperty Name="emp_pwd" ColumnName="emp_pwd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -205,17 +199,6 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
                 <ScalarProperty Name="role_name" ColumnName="role_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Department">
-            <EntityTypeMapping TypeName="testFrameModel.Department">
-              <MappingFragment StoreEntitySet="Department">
-                <ScalarProperty Name="dept_leader" ColumnName="dept_leader" />
-                <ScalarProperty Name="dept_pname" ColumnName="dept_pname" />
-                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
-                <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
-                <ScalarProperty Name="dept_id" ColumnName="dept_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

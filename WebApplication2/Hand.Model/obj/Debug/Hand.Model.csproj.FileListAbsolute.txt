@@ -14,7 +14,6 @@ F:\mvc框架\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.dll
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.dll
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.xml
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.xml
-F:\mvc框架\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll.config
@@ -27,3 +26,4 @@ E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
+F:\mvc框架\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache

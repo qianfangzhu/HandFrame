@@ -12,33 +12,37 @@ app.config(function ($provide) {
 });
 
 app.controller('MainCtrl', function ($scope) {
+    var employee = "";
+    $.ajax({
+        url: "/User/GetEmp",
+        type: "get",
+        async: false,
+        success: function (data) {
+            employee = data;
+        },
+        error: function () {
+            alert("数据获取失败");
+        }
+    });
+
     $scope.gridOptions = {
         enablePaginationControls: false,
         rowHeight: 60,
         paginationPageSize: 20,
         columnDefs:
         [
-            //{ "field": "Id", "name": "系统序号", "width": 120 },
-            //{ "field": "Name", "name": "名称" },
-            //{ "field": "Description", "name": "描述" },
-            //{ "field": "Button", "name": "编辑/添加组件", cellTemplate: '<div><input class="btnOpreation" type="Button" value="编辑" ng-click="grid.appScope.clearAll(row.entity);"></input><input id="btnConfig" type="Button" value="配置组件" ng-click="grid.appScope.webPartConfig(row.entity);"></input></div>' }
+            { "field": "EmpId", "display": "none", visible: false },
             { "field": "EmpNo", "name": "员工工号" },
             { "field": "EmpName", "name": "员工姓名" },
-            { "field": "EmpGender", "name": "性别" },
-            { "field": "EmpDept", "name": "部门" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" },
-            { "field": "", "name": "" }
+            { "field": "EmpEmail", "name": "电子邮件", cellTooltip: function (row) { return 'Email: ' + row.entity.EmpEmail } },
+            { "field": "EmpMobile", "name": "手机号码" },
+            { "field": "EmpJoinTime", "name": "入职日期" },
+            { "field": "EmpWorkAddress", "name": "工作地点", cellTooltip: function (row) { return 'Address: ' + row.entity.EmpWorkAddress } },
+            { "field": "EmpRoleName", "name": "岗位职责" },
+            { "field": "EmpIsValid", "name": "是否在职" },
+            { "field": "EmpDeptName", "name": "所在部门" }
         ],
-        data: ""
+        data: employee
     };
 
     $scope.gridOptions.onRegisterApi = function (gridApi) {

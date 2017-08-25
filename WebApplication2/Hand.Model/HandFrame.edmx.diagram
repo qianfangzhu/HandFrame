@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c83b29bc093414c8a6175a825a313b5" Name="Diagram1">
-        <EntityTypeShape EntityType="testFrameModel.employee" Width="1.5" PointX="3.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="testFrameModel.Role" Width="1.5" PointX="1" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="testFrameModel.FK_employee_Dept" ManuallyRouted="false" />
+      <Diagram DiagramId="b3ae849fad01438ebda4a3eb21623603" Name="Diagram1">
+        <EntityTypeShape EntityType="testFrameModel.Department" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testFrameModel.employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="testFrameModel.Role" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="testFrameModel.FK_employee_Department" ManuallyRouted="false" />
         <AssociationConnector Association="testFrameModel.FK_employee_Role" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="testFrameModel.Department" Width="1.5" PointX="6.125" PointY="1.875" />
-        <AssociationConnector Association="testFrameModel.FK_employee_Dept1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

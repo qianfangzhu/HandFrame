@@ -170,3 +170,5 @@ F:\mvc框架\testFrame\WebApplication2\Hand.Web\bin\Hand.Model.dll
 F:\mvc框架\testFrame\WebApplication2\Hand.Web\bin\Hand.Business.pdb
 F:\mvc框架\testFrame\WebApplication2\Hand.Web\bin\Hand.Model.pdb
 F:\mvc框架\testFrame\WebApplication2\Hand.Web\obj\Debug\Hand.Web.csprojResolveAssemblyReference.cache
+F:\mvc框架\testFrame\WebApplication2\Hand.Web\bin\Hand.Enum.dll
+F:\mvc框架\testFrame\WebApplication2\Hand.Web\bin\Hand.Enum.pdb

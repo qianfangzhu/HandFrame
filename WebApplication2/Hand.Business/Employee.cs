@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Hand.Model;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.ComponentModel;
+using Hand.Enum;
 
 namespace Hand.Business
 {
@@ -51,10 +54,37 @@ namespace Hand.Business
         /// 获取员工信息
         /// </summary>
         /// <returns></returns>
-        public List<employee> GetEmp()
+        public List<EmployeeInfo> GetEmp()
         {
-            var emp = DbEntities.employee.ToList();
-            return emp;
+            //var emp = DbEntities.employee.ToList().Select(e => new EmployeeInfo
+            //{
+            //    EmpNo = e.emp_No,
+            //    EmpName = e.emp_name,
+            //    EmpEmail = e.emp_email,
+            //    EmpDept = e.emp_dept_id,
+            //    EmpIsValid = e.emp_isvalid,
+            //    EmpJoinTime = Convert.ToDateTime(e.emp_jointime).ToString("yyyy-MM-dd"),
+            //    EmpMobile = e.emp_mobile,
+            //    EmpResponse = e.emp_role_id,
+            //    EmpWorkAddress = e.emp_workaddress
+            //}).ToList();
+            var empInfo = (from emp in DbEntities.employee.ToList()
+                           join dept in DbEntities.Department.ToList() on emp.emp_dept_id equals dept.dept_id
+                           join role in DbEntities.Role.ToList() on emp.emp_role_id equals role.role_id
+                           select new EmployeeInfo
+                           {
+                               EmpId = emp.emp_id,
+                               EmpNo = emp.emp_No,
+                               EmpName = emp.emp_name,
+                               EmpMobile = emp.emp_mobile,
+                               EmpEmail = emp.emp_email,
+                               EmpRoleName = role.role_name,
+                               EmpIsValid = EnumHelper.GetDescription((CommonEnum)emp.emp_isvalid.GetHashCode()),
+                               EmpWorkAddress = emp.emp_workaddress,
+                               EmpJoinTime = Convert.ToDateTime(emp.emp_jointime).ToString("yyyy-MM-dd"),
+                               EmpDeptName = dept.dept_name
+                           }).ToList();
+            return empInfo;
         }
 
         /// <summary>
