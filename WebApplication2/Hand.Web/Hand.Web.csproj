@@ -209,20 +209,29 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Accordion_styles.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\greata-view.css" />
+    <Content Include="Content\HomePage.css" />
     <Content Include="Content\icon.css" />
     <Content Include="Content\Login\Css\reset.css" />
     <Content Include="Content\Login\Css\style.css" />
     <Content Include="Content\Login\Css\supersized.css" />
     <Content Include="Content\Login\Image\login.jpg" />
+    <Content Include="Content\sidebar_component.css" />
+    <Content Include="Content\sidebar_demo.css" />
+    <Content Include="Content\sidebar_normalize.css" />
     <Content Include="Content\ui-grid-greata.css" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\loginOut.jpg" />
+    <Content Include="Images\open.jpg" />
+    <Content Include="Images\portrait.jpg" />
+    <Content Include="Scripts\Accordion.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -246,6 +255,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sidebar.js" />
+    <Content Include="Scripts\sidebar_gnmenu.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Scripts\User\Employee.js" />

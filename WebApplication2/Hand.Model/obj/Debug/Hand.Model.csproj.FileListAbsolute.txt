@@ -27,3 +27,13 @@ E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.cspr
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
 E:\Frame\NewFrame\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
 F:\mvc框架\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll.config
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.pdb
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.dll
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.xml
+E:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
+E:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
+E:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb

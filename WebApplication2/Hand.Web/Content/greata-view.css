@@ -48,7 +48,7 @@
     float: left;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 100%;
+    width: 98%;
 }
 
     .ge-registerview-toolbar .icons {
@@ -101,7 +101,7 @@
 .ge-registerview-body .datagrid {
     position: relative;
     float: left;
-    width: 100%;
+    width: 99%;
 }
     .ge-registerview-body .datagrid .greata-ui-grid {
         width: 99%;

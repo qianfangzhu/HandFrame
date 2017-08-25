@@ -1,11 +1,12 @@
 ﻿
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "人员管理";
 }
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="~/Content/ui-grid.css?v=1.0" rel="stylesheet" />
 <link href="~/Content/ui-grid-greata.css" rel="stylesheet" />
-<link href="~/Content/greata-view.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/greata-view.css?v=1.0" rel="stylesheet" type="text/css" />
 <link href="~/Content/icon.css" rel="stylesheet" />
 <div class="ge-registerview-body" ng-app="app" style="padding-left: 35px;">
     <div class="ge-registerview-header">
@@ -48,9 +49,6 @@
     window.onload = function () {
         var allcookies = document.cookie;
         var cookiePos = allcookies.indexOf("empNo");   //索引的长度
-
-        // 如果找到了索引，就代表cookie存在，
-        // 反之，就说明不存在。
         if (cookiePos != -1) {
 
         }
