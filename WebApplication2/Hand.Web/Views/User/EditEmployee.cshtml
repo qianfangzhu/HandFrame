@@ -1,0 +1,58 @@
+﻿<link href="~/Content/Login/Css/HomePage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<div id="wrap">
+    <table id="main_table">
+        <tr>
+            <td class="table_left">员工工号</td>
+            <td class="table_right"><input type="text" maxlength="20" class="main_input"></td>
+        </tr>
+        <tr>
+            <td class="table_left">员工姓名</td>
+            <td class="table_right"><input type="text" maxlength="20" class="main_input"></td>
+        </tr>
+        <tr>
+            <td style="width: 250px;padding-left: 9px;text-align: right;color:#67696C;">电子邮件</td>
+            <td class="table_right"><input type="text" value=""></td>
+        </tr>
+        <tr>
+            <td class="table_left">手机号码</td>
+            <td class="table_right"><input type="text" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td class="table_left">入职时间</td>
+            <td class="table_right"><input type="text" value=""></td>
+        </tr>
+        <tr>
+            <td class="table_left">工作地点</td>
+            <td class="table_right"><input type="text" value=""></td>
+        </tr>
+        <tr>
+            <td class="table_left">岗位职责</td>
+            <td class="table_right"><input type="text" maxlength="20"></td>
+        </tr>
+        <tr>
+            <td class="table_left">所在部门</td>
+            <td class="table_right"><input type="text" maxlength="20"></td>
+        </tr>
+    </table>
+</div>
+
+<div id="foot">
+    <input type="button" value="确认" style="background:#0E2547;" onclick="btn_confirm()" id="btnConfirm">
+    <input type="button" value="取消" style="float:right;background: red;" id="btnCancel">
+</div>
+
+<script>
+    $("#btnConfirm").click(function () {
+        var index = parent.layer.getFrameIndex(window.name); //获取窗口唯一标识
+        parent.layer.close(index);
+        window.parent.location = window.parent.location;
+    });
+
+    $("#btnCancel").click(function () {
+        var index = parent.layer.getFrameIndex(window.name); //获取窗口唯一标识
+        parent.layer.close(index);
+        window.parent.location = window.parent.location;
+    });
+</script>

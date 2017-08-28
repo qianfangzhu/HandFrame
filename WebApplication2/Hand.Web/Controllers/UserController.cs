@@ -83,5 +83,10 @@ namespace Hand.Web.Controllers
             }
             return msg;
         }
+
+        public ActionResult EditEmployee()
+        {
+            return View();
+        }
     }
 }
