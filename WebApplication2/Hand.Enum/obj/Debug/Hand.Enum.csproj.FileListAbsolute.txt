@@ -8,3 +8,8 @@ E:\MVC\testFrame\WebApplication2\Hand.Enum\bin\Debug\Hand.Enum.pdb
 E:\MVC\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.csprojResolveAssemblyReference.cache
 E:\MVC\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.dll
 E:\MVC\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.pdb
+F:\testFrame\WebApplication2\Hand.Enum\bin\Debug\Hand.Enum.dll
+F:\testFrame\WebApplication2\Hand.Enum\bin\Debug\Hand.Enum.pdb
+F:\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.csprojResolveAssemblyReference.cache
+F:\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.dll
+F:\testFrame\WebApplication2\Hand.Enum\obj\Debug\Hand.Enum.pdb

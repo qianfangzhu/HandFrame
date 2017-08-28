@@ -47,3 +47,13 @@ E:\MVC\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.
 E:\MVC\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
 E:\MVC\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
 E:\MVC\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll.config
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.dll
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\Hand.Model.pdb
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.dll
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.xml
+F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
+F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
+F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb

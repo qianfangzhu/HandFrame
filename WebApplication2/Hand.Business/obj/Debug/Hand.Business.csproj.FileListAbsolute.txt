@@ -64,3 +64,17 @@ E:\MVC\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServ
 E:\MVC\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
 E:\MVC\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
 E:\MVC\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll.config
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.dll
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Business.pdb
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.dll
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.dll
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Enum.dll
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.dll
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Enum.pdb
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\Hand.Model.pdb
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.xml
+F:\testFrame\WebApplication2\Hand.Business\bin\Debug\EntityFramework.SqlServer.xml
+F:\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.csprojResolveAssemblyReference.cache
+F:\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.dll
+F:\testFrame\WebApplication2\Hand.Business\obj\Debug\Hand.Business.pdb
