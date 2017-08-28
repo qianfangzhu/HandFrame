@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Hand.Model;
-using System.Data.Entity;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.ComponentModel;
 using Hand.Enum;
 
 namespace Hand.Business
@@ -51,26 +46,15 @@ namespace Hand.Business
         /// <summary>
         /// 朱乾方
         /// 20170824
-        /// 获取员工信息
+        /// 获取所有在职员工信息
         /// </summary>
         /// <returns></returns>
         public List<EmployeeInfo> GetEmp()
         {
-            //var emp = DbEntities.employee.ToList().Select(e => new EmployeeInfo
-            //{
-            //    EmpNo = e.emp_No,
-            //    EmpName = e.emp_name,
-            //    EmpEmail = e.emp_email,
-            //    EmpDept = e.emp_dept_id,
-            //    EmpIsValid = e.emp_isvalid,
-            //    EmpJoinTime = Convert.ToDateTime(e.emp_jointime).ToString("yyyy-MM-dd"),
-            //    EmpMobile = e.emp_mobile,
-            //    EmpResponse = e.emp_role_id,
-            //    EmpWorkAddress = e.emp_workaddress
-            //}).ToList();
             var empInfo = (from emp in DbEntities.employee.ToList()
                            join dept in DbEntities.Department.ToList() on emp.emp_dept_id equals dept.dept_id
                            join role in DbEntities.Role.ToList() on emp.emp_role_id equals role.role_id
+                           where emp.emp_isvalid == CommonEnum.Job.GetHashCode()
                            select new EmployeeInfo
                            {
                                EmpId = emp.emp_id,
@@ -93,39 +77,64 @@ namespace Hand.Business
         /// 添加员工
         /// </summary>
         /// <returns></returns>
-        public bool AddEmp(employee emp)
+        public string AddEmp(employee emp)
         {
+            var strMsg = new StringBuilder();
             try
             {
-                employee employee = new employee
+                if (emp != null)
                 {
-                    //emp_No = emp.emp_No,
-                    //emp_name = emp.emp_name,
-                    //emp_email = emp.emp_email,
-                    //emp_mobile = emp.emp_mobile,
-                    //emp_role_id = emp.emp_role_id,
-                    //emp_workaddress = emp.emp_workaddress,
-                    //emp_jointime = emp.emp_jointime,
-                    //emp_dept_id = emp.emp_dept_id,
-                    //emp_isvalid = 1
-                    emp_No = 13951,
-                    emp_name = "林佳",
-                    emp_email = "jia.lin@hand-china.com",
-                    emp_mobile = "13035689452",
-                    emp_role_id = 1,
-                    emp_workaddress = "上海浦东",
-                    emp_jointime = DateTime.Now,
-                    emp_dept_id = 1144,
-                    emp_isvalid = 1
-                };
-                DbEntities.employee.Add(employee);
-                DbEntities.SaveChanges();
-                return true;
+                    employee employee = new employee
+                    {
+                        emp_No = emp.emp_No,
+                        emp_name = emp.emp_name,
+                        emp_email = emp.emp_email,
+                        emp_mobile = emp.emp_mobile,
+                        emp_role_id = emp.emp_role_id,
+                        emp_workaddress = emp.emp_workaddress,
+                        emp_jointime = DateTime.Now,
+                        emp_dept_id = emp.emp_dept_id,
+                        emp_isvalid = CommonEnum.Job.GetHashCode()
+                    };
+                    DbEntities.employee.Add(employee);
+                    DbEntities.SaveChanges();
+                    strMsg.Append("添加成功");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                strMsg.AppendFormat("添加失败:{0}", ex);
             }
+            return strMsg.ToString();
+        }
+
+        /// <summary>
+        /// 20170828
+        /// 朱乾方
+        /// 根据用户Id获取员工信息
+        /// </summary>
+        /// <param name="id">用户Id</param>
+        /// <returns></returns>
+        public EmployeeInfo GetEmployeeByNo(int? id)
+        {
+            var empInfo = (from emp in DbEntities.employee.ToList()
+                           join dept in DbEntities.Department.ToList() on emp.emp_dept_id equals dept.dept_id
+                           join role in DbEntities.Role.ToList() on emp.emp_role_id equals role.role_id
+                           where emp.emp_id == id
+                           select new EmployeeInfo
+                           {
+                               EmpId = emp.emp_id,
+                               EmpNo = emp.emp_No,
+                               EmpName = emp.emp_name,
+                               EmpMobile = emp.emp_mobile,
+                               EmpEmail = emp.emp_email,
+                               EmpIsValid = EnumHelper.GetDescription((CommonEnum)emp.emp_isvalid.GetHashCode()),
+                               EmpWorkAddress = emp.emp_workaddress,
+                               EmpJoinTime = Convert.ToDateTime(emp.emp_jointime).ToString("yyyy-MM-dd"),
+                               EmpRoleName = role.role_name,
+                               EmpDeptName = dept.dept_name
+                           }).FirstOrDefault();
+            return empInfo;
         }
 
         /// <summary>
@@ -133,47 +142,74 @@ namespace Hand.Business
         /// 20170824
         /// 编辑
         /// </summary>
-        /// <param name="empId"></param>
-        /// <param name="employee"></param>
+        /// <param name="empId">用户Id</param>
+        /// <param name="employee">用户信息实体</param>
         /// <returns></returns>
-        public bool EditEmp(int? empId, employee employee)
+        public string EditEmp(int? empId, employee employee)
         {
-            if (empId > 0)
+            var strMsg = new StringBuilder();
+            try
             {
-                employee emp = DbEntities.employee.FirstOrDefault(e => e.emp_No == empId);//先查找出要修改的对象
-                if (emp != null)
+                if (empId > 0)
                 {
-                    emp = employee;
-                    DbEntities.employee.Attach(emp);
-                    DbEntities.SaveChanges();
-                    return true;
+                    if (employee != null)
+                    {
+                        employee emp = DbEntities.employee.FirstOrDefault(e => e.emp_id == empId); //先查找出要修改的对象
+                        if (emp != null)
+                        {
+                            emp.emp_No = employee.emp_No;
+                            emp.emp_name = employee.emp_name;
+                            emp.emp_email = employee.emp_email;
+                            emp.emp_mobile = employee.emp_mobile;
+                            emp.emp_role_id = employee.emp_role_id;
+                            emp.emp_workaddress = employee.emp_workaddress;
+                            emp.emp_dept_id = employee.emp_dept_id;
+                            DbEntities.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+                            DbEntities.SaveChanges();
+                            strMsg.Append("修改成功");
+                        }
+                    }
                 }
             }
-            return false;
+            catch (Exception ex)
+            {
+
+                strMsg.AppendFormat("修改失败:{0}", ex);
+            }
+            return strMsg.ToString();
+
         }
 
         /// <summary>
         /// 朱乾方
         /// 20170824
-        /// 将人员无效
+        /// 根据用户Id将人员无效
         /// </summary>
-        /// <param name="empId"></param>
+        /// <param name="empId">用户Id</param>
         /// <returns></returns>
-        public bool DeleteEmp(int? empId)
+        public string DeleteEmp(int? empId)
         {
-            if (empId > 0)
+            var strMsg = new StringBuilder();
+            try
             {
-                employee emp = DbEntities.employee.FirstOrDefault(e => e.emp_No == empId);//先查找出要修改的对象
-                if (emp != null)
+                if (empId > 0)
                 {
-                    emp.emp_isvalid = 0;
-                    DbEntities.employee.Attach(emp);
-                    DbEntities.employee.Remove(emp);
-                    DbEntities.SaveChanges();
-                    return true;
+                    employee emp = DbEntities.employee.FirstOrDefault(e => e.emp_id == empId);//先查找出要修改的对象
+                    if (emp != null)
+                    {
+                        emp.emp_isvalid = 0;
+                        DbEntities.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+                        DbEntities.SaveChanges();
+                        strMsg.Append("删除成功");
+                    }
                 }
             }
-            return false;
+            catch (Exception ex)
+            {
+                strMsg.AppendFormat("删除失败：{0}", ex);
+            }
+
+            return strMsg.ToString();
         }
     }
 }
