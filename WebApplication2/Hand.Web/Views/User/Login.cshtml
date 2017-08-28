@@ -16,9 +16,11 @@
 <input hidden="hidden" value="@ViewBag.ReturnUrl" id="returnUrl"/>
 <div class="page-container">
     <h1>Login</h1>
-    <input type="text" name="empNo" id="empNo" placeholder="Username">
-    <input type="password" name="pwd" id="pwd" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <div id="Login_input" style="width:500px;height:230px;margin:0 auto;">
+        <input type="text" name="empNo" id="empNo" placeholder="Username">
+        <input type="password" name="pwd" id="pwd" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
 </div>
 <script>
     function login() {
