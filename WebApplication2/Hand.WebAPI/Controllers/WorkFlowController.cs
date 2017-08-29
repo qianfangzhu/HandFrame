@@ -5,7 +5,7 @@ using Hand.Model;
 
 namespace Hand.WebAPI.Controllers
 {
-    [RoutePrefix("workflow")]
+    [RoutePrefix("work")]
     public class WorkFlowController : ApiController
     {
         public static WorkFlowInfo WorkFlowInfo = new WorkFlowInfo();
