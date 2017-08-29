@@ -80,6 +80,7 @@
     <Compile Include="WorkFlow.cs">
       <DependentUpon>HandFrame.tt</DependentUpon>
     </Compile>
+    <Compile Include="WorkFlowInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
