@@ -44,6 +44,11 @@ namespace Hand.Business
         /// <returns></returns>
         public WorkFlow AddWorkFlow(WorkFlow workFlow)
         {
+            var deptLeader = from w in DbEntities.WorkFlow
+                             join dept in DbEntities.Department on w.Work_DeptId equals dept.dept_id
+                             where dept.dept_id == workFlow.Work_DeptId
+                             select dept.dept_leader;
+
             var work = new WorkFlow
             {
                 Work_EmpNo = workFlow.Work_EmpNo,
@@ -55,6 +60,8 @@ namespace Hand.Business
             };
             DbEntities.WorkFlow.Add(work);
             DbEntities.SaveChanges();
+            
+
             return work;
         }
 
