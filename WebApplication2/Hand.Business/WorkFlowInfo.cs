@@ -40,10 +40,9 @@ namespace Hand.Business
         /// 20170829
         /// 添加工作流信息
         /// </summary>
-        /// <param name="empNo"></param>
         /// <param name="workFlow"></param>
         /// <returns></returns>
-        public WorkFlow AddWorkFlow(int? empNo, WorkFlow workFlow)
+        public WorkFlow AddWorkFlow(WorkFlow workFlow)
         {
             var work = new WorkFlow
             {
@@ -52,7 +51,7 @@ namespace Hand.Business
                 Work_Content = workFlow.Work_Content,
                 Work_CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")),
                 Work_DeptId = workFlow.Work_DeptId,
-                Work_Status = workFlow.Work_Status
+                Work_Status = WorkStatusEnum.Approval.GetHashCode()
             };
             DbEntities.WorkFlow.Add(work);
             DbEntities.SaveChanges();
