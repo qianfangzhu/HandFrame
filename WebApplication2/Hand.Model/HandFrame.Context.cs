@@ -13,10 +13,10 @@ namespace Hand.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class testFrameEntities1 : DbContext
+    public partial class testFrameEntities : DbContext
     {
-        public testFrameEntities1()
-            : base("name=testFrameEntities1")
+        public testFrameEntities()
+            : base("name=testFrameEntities")
         {
         }
     
