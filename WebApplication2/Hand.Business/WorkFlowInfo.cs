@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hand.Model;
+using Hand.Enum;
 
 namespace Hand.Business
 {
@@ -18,12 +19,18 @@ namespace Hand.Business
         /// 获取当前登陆人的工作流信息
         /// </summary>
         /// <returns></returns>
-        public List<WorkFlow> GetWorkFlow(int? empNo)
+        public List<WorkFlowViewMoel> GetWorkFlow(int? empNo)
         {
-            var workFlow = (from work in DbEntities.WorkFlow
+            var workFlow = (from work in DbEntities.WorkFlow.ToList()
+                            join dept in DbEntities.Department.ToList() on work.Work_DeptId equals dept.dept_id
                             where work.Work_EmpNo == empNo
                             select new WorkFlowViewMoel
                             {
+                                WorkTitle = work.Work_Title,
+                                WorkContent = work.Work_Content,
+                                WorkCreateTime = Convert.ToDateTime(work.Work_CreateTime).ToString("yyyy-MM-dd"),
+                                WorkStatus = EnumHelper.GetDescription((WorkStatusEnum)work.Work_Status.GetHashCode()),
+                                DeptLeader = dept.dept_leader
                             }).ToList();
             return workFlow;
         }

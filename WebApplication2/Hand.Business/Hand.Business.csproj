@@ -52,6 +52,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkFlowInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hand.Enum\Hand.Enum.csproj">
