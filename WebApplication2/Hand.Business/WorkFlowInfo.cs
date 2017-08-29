@@ -47,7 +47,7 @@ namespace Hand.Business
             var approverNo = (from w in DbEntities.WorkFlow
                               join dept in DbEntities.Department on w.Work_DeptId equals dept.dept_id
                               where dept.dept_id == workFlow.Work_DeptId
-                              select new LearderViewModel
+                              select new
                               {
                                   LeaderNo = dept.dept_leaderNo
                               }).FirstOrDefault();
