@@ -18,6 +18,7 @@ namespace Hand.WebAPI.Controllers
         /// <param name="empNo">用户工号</param>
         /// <returns></returns>
         [Route("getWorkFlow/{empNo}")]
+        [HttpGet]
         public IHttpActionResult GetWorkFlow(int? empNo)
         {
             try
@@ -39,6 +40,7 @@ namespace Hand.WebAPI.Controllers
         /// <param name="workFlow">工作流实体</param>
         /// <returns></returns>
         [Route("addWorkFlow/{empNo}")]
+        [HttpPost]
         public IHttpActionResult AddWorkFlow(WorkFlow workFlow)
         {
             try
@@ -61,6 +63,7 @@ namespace Hand.WebAPI.Controllers
         /// <param name="workFlow">工作流实体</param>
         /// <returns></returns>
         [Route("edit/{workId}")]
+        [HttpPut]
         public IHttpActionResult EditWorkFlow(int? workId, WorkFlow workFlow)
         {
             try
@@ -82,6 +85,7 @@ namespace Hand.WebAPI.Controllers
         /// <param name="workId">工作流Id</param>
         /// <returns></returns>
         [Route("getWorkFlowById/{workId}")]
+        [HttpGet]
         public IHttpActionResult GetWorkFlowById(int? workId)
         {
             try
