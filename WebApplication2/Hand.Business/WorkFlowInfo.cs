@@ -44,11 +44,13 @@ namespace Hand.Business
         /// <returns></returns>
         public WorkFlow AddWorkFlow(WorkFlow workFlow)
         {
-            var deptLeader = from w in DbEntities.WorkFlow
-                             join dept in DbEntities.Department on w.Work_DeptId equals dept.dept_id
-                             where dept.dept_id == workFlow.Work_DeptId
-                             select dept.dept_leader;
-
+            var approverNo = (from w in DbEntities.WorkFlow
+                              join dept in DbEntities.Department on w.Work_DeptId equals dept.dept_id
+                              where dept.dept_id == workFlow.Work_DeptId
+                              select new LearderViewModel
+                              {
+                                  LeaderNo = dept.dept_leaderNo
+                              }).FirstOrDefault();
             var work = new WorkFlow
             {
                 Work_EmpNo = workFlow.Work_EmpNo,
@@ -56,11 +58,12 @@ namespace Hand.Business
                 Work_Content = workFlow.Work_Content,
                 Work_CreateTime = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")),
                 Work_DeptId = workFlow.Work_DeptId,
-                Work_Status = WorkStatusEnum.Approval.GetHashCode()
+                Work_Status = WorkStatusEnum.Approval.GetHashCode(),
+                Work_ApproverNo = approverNo.LeaderNo
             };
             DbEntities.WorkFlow.Add(work);
             DbEntities.SaveChanges();
-            
+
 
             return work;
         }
