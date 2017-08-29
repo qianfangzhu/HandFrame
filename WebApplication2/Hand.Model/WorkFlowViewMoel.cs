@@ -5,7 +5,7 @@
     /// 20170829
     /// 工作流视图
     /// </summary>
-    public class WorkFlowInfo
+    public class WorkFlowViewMoel
     {
         public string WorkTitle { get; set; }
         public string WorkContent { get; set; }

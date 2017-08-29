@@ -22,7 +22,7 @@ namespace Hand.Business
         {
             var workFlow = (from work in DbEntities.WorkFlow
                             where work.Work_EmpNo == empNo
-                            select new WorkFlowInfo
+                            select new WorkFlowViewMoel
                             {
                             }).ToList();
             return workFlow;
