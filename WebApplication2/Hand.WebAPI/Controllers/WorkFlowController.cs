@@ -39,7 +39,7 @@ namespace Hand.WebAPI.Controllers
         /// </summary>
         /// <param name="workFlow">工作流实体</param>
         /// <returns></returns>
-        [Route("addWorkFlow/{empNo}")]
+        [Route("addWorkFlow")]
         [HttpPost]
         public IHttpActionResult AddWorkFlow(WorkFlow workFlow)
         {
