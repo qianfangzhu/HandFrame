@@ -14,6 +14,7 @@
           <Property Name="dept_name" Type="nvarchar" MaxLength="20" />
           <Property Name="dept_pname" Type="nvarchar" MaxLength="20" />
           <Property Name="dept_leader" Type="nvarchar" MaxLength="20" />
+          <Property Name="dept_leaderNo" Type="int" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -51,6 +52,7 @@
           <Property Name="Work_DeptId" Type="int" />
           <Property Name="Work_CreateTime" Type="datetime" />
           <Property Name="Work_Status" Type="int" />
+          <Property Name="Work_ApproverNo" Type="int" />
         </EntityType>
         <Association Name="FK__WorkFlow__Work_D__300424B4">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
@@ -121,6 +123,7 @@
           <Property Name="dept_leader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="employee" Relationship="Self.FK_employee_Department" FromRole="Department" ToRole="employee" />
           <NavigationProperty Name="WorkFlow" Relationship="testFrameModel.FK__WorkFlow__Work_D__300424B4" FromRole="Department" ToRole="WorkFlow" />
+          <Property Name="dept_leaderNo" Type="Int32" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -204,6 +207,7 @@
           <Property Name="Work_CreateTime" Type="DateTime" Precision="3" />
           <Property Name="Work_Status" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="testFrameModel.FK__WorkFlow__Work_D__300424B4" FromRole="WorkFlow" ToRole="Department" />
+          <Property Name="Work_ApproverNo" Type="Int32" />
         </EntityType>
         <Association Name="FK__WorkFlow__Work_D__300424B4">
           <End Type="testFrameModel.Department" Role="Department" Multiplicity="0..1" />
@@ -226,6 +230,7 @@
           <EntitySetMapping Name="Department">
             <EntityTypeMapping TypeName="testFrameModel.Department">
               <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="dept_leaderNo" ColumnName="dept_leaderNo" />
                 <ScalarProperty Name="dept_id" ColumnName="dept_id" />
                 <ScalarProperty Name="dept_pid" ColumnName="dept_pid" />
                 <ScalarProperty Name="dept_name" ColumnName="dept_name" />
@@ -264,6 +269,7 @@
           <EntitySetMapping Name="WorkFlow">
             <EntityTypeMapping TypeName="testFrameModel.WorkFlow">
               <MappingFragment StoreEntitySet="WorkFlow">
+                <ScalarProperty Name="Work_ApproverNo" ColumnName="Work_ApproverNo" />
                 <ScalarProperty Name="Work_Status" ColumnName="Work_Status" />
                 <ScalarProperty Name="Work_CreateTime" ColumnName="Work_CreateTime" />
                 <ScalarProperty Name="Work_DeptId" ColumnName="Work_DeptId" />

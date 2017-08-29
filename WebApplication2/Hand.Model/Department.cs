@@ -26,6 +26,7 @@ namespace Hand.Model
         public string dept_name { get; set; }
         public string dept_pname { get; set; }
         public string dept_leader { get; set; }
+        public Nullable<int> dept_leaderNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employee { get; set; }

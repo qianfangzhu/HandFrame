@@ -21,6 +21,7 @@ namespace Hand.Model
         public Nullable<int> Work_DeptId { get; set; }
         public Nullable<System.DateTime> Work_CreateTime { get; set; }
         public Nullable<int> Work_Status { get; set; }
+        public Nullable<int> Work_ApproverNo { get; set; }
     
         public virtual Department Department { get; set; }
     }
