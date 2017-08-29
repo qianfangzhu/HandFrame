@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testFrameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="testFrameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="dept_id" />
@@ -40,6 +40,30 @@
           <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="role_name" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="WorkFlow">
+          <Key>
+            <PropertyRef Name="Work_Id" />
+          </Key>
+          <Property Name="Work_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work_Content" Type="nvarchar" MaxLength="255" />
+          <Property Name="Work_EmpNo" Type="int" />
+          <Property Name="Work_DeptId" Type="int" />
+          <Property Name="Work_CreateTime" Type="datetime" />
+          <Property Name="Work_Status" Type="int" />
+        </EntityType>
+        <Association Name="FK__WorkFlow__Work_D__300424B4">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="WorkFlow" Type="Self.WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="Work_DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_employee_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="employee" Type="Self.employee" Multiplicity="*" />
@@ -68,6 +92,11 @@
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkFlow" EntityType="Self.WorkFlow" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__WorkFlow__Work_D__300424B4" Association="Self.FK__WorkFlow__Work_D__300424B4">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+          </AssociationSet>
           <AssociationSet Name="FK_employee_Department" Association="Self.FK_employee_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="employee" EntitySet="employee" />
@@ -77,8 +106,7 @@
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testFrameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -92,6 +120,7 @@
           <Property Name="dept_pname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="dept_leader" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="employee" Relationship="Self.FK_employee_Department" FromRole="Department" ToRole="employee" />
+          <NavigationProperty Name="WorkFlow" Relationship="testFrameModel.FK__WorkFlow__Work_D__300424B4" FromRole="Department" ToRole="WorkFlow" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -157,7 +186,37 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
+          <EntitySet Name="WorkFlow" EntityType="testFrameModel.WorkFlow" />
+          <AssociationSet Name="FK__WorkFlow__Work_D__300424B4" Association="testFrameModel.FK__WorkFlow__Work_D__300424B4">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="WorkFlow" EntitySet="WorkFlow" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="WorkFlow">
+          <Key>
+            <PropertyRef Name="Work_Id" />
+          </Key>
+          <Property Name="Work_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Work_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Work_Content" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Work_EmpNo" Type="Int32" />
+          <Property Name="Work_DeptId" Type="Int32" />
+          <Property Name="Work_CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="Work_Status" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="testFrameModel.FK__WorkFlow__Work_D__300424B4" FromRole="WorkFlow" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK__WorkFlow__Work_D__300424B4">
+          <End Type="testFrameModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="testFrameModel.WorkFlow" Role="WorkFlow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="dept_id" />
+            </Principal>
+            <Dependent Role="WorkFlow">
+              <PropertyRef Name="Work_DeptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -199,6 +258,19 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
                 <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkFlow">
+            <EntityTypeMapping TypeName="testFrameModel.WorkFlow">
+              <MappingFragment StoreEntitySet="WorkFlow">
+                <ScalarProperty Name="Work_Status" ColumnName="Work_Status" />
+                <ScalarProperty Name="Work_CreateTime" ColumnName="Work_CreateTime" />
+                <ScalarProperty Name="Work_DeptId" ColumnName="Work_DeptId" />
+                <ScalarProperty Name="Work_EmpNo" ColumnName="Work_EmpNo" />
+                <ScalarProperty Name="Work_Content" ColumnName="Work_Content" />
+                <ScalarProperty Name="Work_Title" ColumnName="Work_Title" />
+                <ScalarProperty Name="Work_Id" ColumnName="Work_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

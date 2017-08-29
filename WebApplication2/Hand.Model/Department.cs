@@ -18,6 +18,7 @@ namespace Hand.Model
         public Department()
         {
             this.employee = new HashSet<employee>();
+            this.WorkFlow = new HashSet<WorkFlow>();
         }
     
         public int dept_id { get; set; }
@@ -28,5 +29,7 @@ namespace Hand.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee> employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WorkFlow> WorkFlow { get; set; }
     }
 }

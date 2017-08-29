@@ -12,20 +12,22 @@ namespace Hand.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-    public partial class testFrameEntities : DbContext
+    
+    public partial class testFrameEntities1 : DbContext
     {
-        public testFrameEntities() : base("name=testFrameEntities")
+        public testFrameEntities1()
+            : base("name=testFrameEntities1")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<employee> employee { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<WorkFlow> WorkFlow { get; set; }
     }
 }

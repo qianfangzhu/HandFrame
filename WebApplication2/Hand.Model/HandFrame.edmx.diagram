@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="testFrameModel.Role" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="testFrameModel.FK_employee_Department" ManuallyRouted="false" />
         <AssociationConnector Association="testFrameModel.FK_employee_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="testFrameModel.WorkFlow" Width="1.5" PointX="5.625" PointY="4.5" />
+        <AssociationConnector Association="testFrameModel.FK__WorkFlow__Work_D__300424B4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
