@@ -56,34 +56,6 @@ namespace Hand.Web.Controllers
             }
         }
 
-        public ActionResult GetEmp()
-        {
-            Employee emp = new Employee();
-            var userInfo = emp.GetEmp();
-            return Json(userInfo, JsonRequestBehavior.AllowGet);
-        }
-
-        /// <summary>
-        /// 添加
-        /// </summary>
-        /// <returns></returns>
-        public string AddEmp(int? empId, employee emp)
-        {
-            string msg;
-            Employee employee = new Employee();
-            if (empId > 0)
-            {
-                employee.EditEmp(empId, emp);
-                msg = "修改成功！";
-            }
-            else
-            {
-                employee.AddEmp(emp);
-                msg = "添加成功！";
-            }
-            return msg;
-        }
-
         public ActionResult EditEmployee()
         {
             return View();
