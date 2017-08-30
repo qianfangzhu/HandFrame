@@ -9,6 +9,7 @@
     <Property Name="dept_name" Type="nvarchar" MaxLength="20" />
     <Property Name="dept_pname" Type="nvarchar" MaxLength="20" />
     <Property Name="dept_leader" Type="nvarchar" MaxLength="20" />
+    <Property Name="dept_leaderNo" Type="int" />
   </EntityType>
   <EntityType Name="employee">
     <Key>
@@ -35,6 +36,31 @@
     <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="role_name" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <EntityType Name="WorkFlow">
+    <Key>
+      <PropertyRef Name="Work_Id" />
+    </Key>
+    <Property Name="Work_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Work_Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Work_Content" Type="nvarchar" MaxLength="255" />
+    <Property Name="Work_EmpNo" Type="int" />
+    <Property Name="Work_DeptId" Type="int" />
+    <Property Name="Work_CreateTime" Type="datetime" />
+    <Property Name="Work_Status" Type="int" />
+    <Property Name="Work_ApproverNo" Type="int" />
+  </EntityType>
+  <Association Name="FK__WorkFlow__Work_D__300424B4">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="WorkFlow" Type="Self.WorkFlow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="dept_id" />
+      </Principal>
+      <Dependent Role="WorkFlow">
+        <PropertyRef Name="Work_DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_employee_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
     <End Role="employee" Type="Self.employee" Multiplicity="*" />
@@ -63,6 +89,11 @@
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkFlow" EntityType="Self.WorkFlow" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__WorkFlow__Work_D__300424B4" Association="Self.FK__WorkFlow__Work_D__300424B4">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="WorkFlow" EntitySet="WorkFlow" />
+    </AssociationSet>
     <AssociationSet Name="FK_employee_Department" Association="Self.FK_employee_Department">
       <End Role="Department" EntitySet="Department" />
       <End Role="employee" EntitySet="employee" />
