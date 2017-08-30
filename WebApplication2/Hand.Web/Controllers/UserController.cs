@@ -56,8 +56,16 @@ namespace Hand.Web.Controllers
             }
         }
 
-        public ActionResult EditEmployee()
+        /// <summary>
+        /// 朱乾方
+        /// 20170830
+        /// 用户编辑页面
+        /// </summary>
+        /// <param name="empId">员工编号</param>
+        /// <returns></returns>
+        public ActionResult EditEmployee(int? empId)
         {
+            ViewBag.EmpId = empId;
             return View();
         }
     }

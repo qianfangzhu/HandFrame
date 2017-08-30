@@ -15,12 +15,12 @@ app.controller('MainCtrl', function ($scope) {
     var employee = "";
     $.ajax({
         url: "http://10.211.53.211:1314/user/getEmp",
-        type:"get",
+        type: "get",
         async: false,
         success: function (data) {
             employee = data;
         },
-        error: function (data) {
+        error: function () {
             alert("数据获取失败");
         }
     });
@@ -40,13 +40,25 @@ app.controller('MainCtrl', function ($scope) {
             { "field": "EmpWorkAddress", "name": "工作地点", cellTooltip: function (row) { return 'Address: ' + row.entity.EmpWorkAddress } },
             { "field": "EmpRoleName", "name": "岗位职责" },
             { "field": "EmpIsValid", "name": "是否在职" },
-            { "field": "EmpDeptName", "name": "所在部门" }
+            { "field": "EmpDeptName", "name": "所在部门" },
+            { "field": "Button", "name": "操作", cellTemplate: '<div><input class="btnEmpOpreation" type="Button" value="编辑" ng-click="grid.appScope.editEmp(row.entity);" /><input id="btnConfig" type="Button" value="设为无效" ng-click="grid.appScope.inValid(row.entity);" /></div>' }
         ],
         data: employee
     };
 
     $scope.gridOptions.onRegisterApi = function (gridApi) {
         $scope.gridApi = gridApi;
+    };
+
+    //编辑弹框
+    $scope.editEmp = function (e) {
+        layer.open({
+            type: 2,
+            title: "编辑",
+            skin: 'layui-layer-rim', //加上边框onRegisterApi
+            area: ['68%', '434px', '16%'], //宽高
+            content: "/User/EditEmployee/?empId=" + e.EmpId
+        });
     };
 
     //输入框数值限制
