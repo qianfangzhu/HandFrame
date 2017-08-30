@@ -46,7 +46,7 @@ namespace Hand.Business
         /// <summary>
         /// 朱乾方
         /// 20170824
-        /// 获取所有在职员工信息
+        /// 获取所有员工信息
         /// </summary>
         /// <returns></returns>
         public List<EmployeeInfo> GetEmp()
