@@ -54,7 +54,6 @@ namespace Hand.Business
             var empInfo = (from emp in DbEntities.employee.ToList()
                            join dept in DbEntities.Department.ToList() on emp.emp_dept_id equals dept.dept_id
                            join role in DbEntities.Role.ToList() on emp.emp_role_id equals role.role_id
-                           where emp.emp_isvalid == CommonEnum.Job.GetHashCode()
                            select new EmployeeInfo
                            {
                                EmpId = emp.emp_id,

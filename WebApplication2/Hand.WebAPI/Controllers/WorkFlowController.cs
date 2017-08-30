@@ -43,15 +43,8 @@ namespace Hand.WebAPI.Controllers
         [HttpPost]
         public IHttpActionResult AddWorkFlow(WorkFlow workFlow)
         {
-            try
-            {
-                var addworkFlowInfo = WorkFlowInfo.AddWorkFlow(workFlow);
-                return Ok(addworkFlowInfo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var addworkFlowInfo = WorkFlowInfo.AddWorkFlow(workFlow);
+            return Ok(addworkFlowInfo);
         }
 
         /// <summary>
