@@ -102,7 +102,7 @@
 		bottom: 0;
 		left: 0;
 		overflow: hidden;
-		width: 60px;
+		width: 0px;
 		border-top: 1px solid #c6d0da;
 		background: white;
 		-webkit-transform: translateX(-60px);
