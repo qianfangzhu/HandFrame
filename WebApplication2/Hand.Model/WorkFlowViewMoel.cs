@@ -12,5 +12,6 @@
         public string WorkCreateTime { get; set; }
         public string WorkStatus { get; set; }
         public string DeptLeader { get; set; }
+        public int? ArtificialNumbers { get; set; }
     }
 }
