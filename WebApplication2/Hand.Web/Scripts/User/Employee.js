@@ -14,13 +14,13 @@ app.config(function ($provide) {
 app.controller('MainCtrl', function ($scope) {
     var employee = "";
     $.ajax({
-        url: "/User/GetEmp",
-        type: "get",
+        url: "http://10.211.53.211:1314/user/getEmp",
+        type:"get",
         async: false,
         success: function (data) {
             employee = data;
         },
-        error: function () {
+        error: function (data) {
             alert("数据获取失败");
         }
     });

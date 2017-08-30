@@ -14,7 +14,7 @@
 }
 
 #logo {
-    width: 30%;
+    width: 60%;
     height: 60px;
     background: #0E2547;
     float: left;
@@ -71,9 +71,7 @@
 }
 
 #icon img {
-    margin-left: 50px;
-    display: table-cell;
-    margin-top: 10px;
+    margin:10px 50px;
     float: left;
 }
 
@@ -103,6 +101,7 @@
     height: 35px;
     margin-top: 15px;
     margin-left: 15px;
+    cursor:pointer;
 }
 
 #head_list {
