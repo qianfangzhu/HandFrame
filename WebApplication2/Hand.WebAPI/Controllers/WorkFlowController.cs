@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Hand.Business;
 using Hand.Model;
 
@@ -21,15 +20,8 @@ namespace Hand.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetWorkFlow(int? empNo)
         {
-            try
-            {
-                var workFlowInfo = WorkFlowInfo.GetWorkFlow(empNo);
-                return Ok(workFlowInfo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var workFlowInfo = WorkFlowInfo.GetWorkFlow(empNo);
+            return Ok(workFlowInfo);
         }
 
         /// <summary>
@@ -60,15 +52,8 @@ namespace Hand.WebAPI.Controllers
         [HttpPut]
         public IHttpActionResult EditWorkFlow(int? workId, WorkFlow workFlow)
         {
-            try
-            {
-                var editWorkFlow = WorkFlowInfo.EditWorkFlow(workId, workFlow);
-                return Ok(editWorkFlow);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var editWorkFlow = WorkFlowInfo.EditWorkFlow(workId, workFlow);
+            return Ok(editWorkFlow);
         }
 
         /// <summary>
@@ -82,15 +67,8 @@ namespace Hand.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetWorkFlowById(int? workId)
         {
-            try
-            {
-                var workFlowInfo = WorkFlowInfo.GetWorkFlowById(workId);
-                return Ok(workFlowInfo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var workFlowInfo = WorkFlowInfo.GetWorkFlowById(workId);
+            return Ok(workFlowInfo);
         }
     }
 }

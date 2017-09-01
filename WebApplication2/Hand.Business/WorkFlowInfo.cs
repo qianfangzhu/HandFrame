@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Hand.Model;
 using Hand.Enum;
 
@@ -21,7 +20,7 @@ namespace Hand.Business
         /// <returns></returns>
         public List<WorkFlowViewMoel> GetWorkFlow(int? empNo)
         {
-            List<WorkFlowViewMoel> workFlow = null;
+            List<WorkFlowViewMoel> workFlow;
             var isLeader = (from dept in DbEntities.Department.ToList()
                             where dept.dept_leaderNo == empNo
                             select dept).ToList();
@@ -116,22 +115,31 @@ namespace Hand.Business
         /// <param name="workId"></param>
         /// <param name="workFlow"></param>
         /// <returns></returns>
-        public WorkFlow EditWorkFlow(int? workId, WorkFlow workFlow)
+        public string EditWorkFlow(int? workId, WorkFlow workFlow)
         {
-            WorkFlow work = null;
-            if (workFlow != null)
+            var strMsg = new StringBuilder();
+            try
             {
-                work = DbEntities.WorkFlow.FirstOrDefault(w => w.Work_Id == workId);
-                if (work != null)
+                if (workFlow != null)
                 {
-                    work.Work_Title = workFlow.Work_Title;
-                    work.Work_Content = workFlow.Work_Content;
-                    work.Work_Status = workFlow.Work_Status;
-                    DbEntities.Entry(work).State = EntityState.Modified;
-                    DbEntities.SaveChanges();
+                    var work = DbEntities.WorkFlow.FirstOrDefault(w => w.Work_Id == workId);
+                    if (work != null)
+                    {
+                        work.Work_Title = workFlow.Work_Title;
+                        work.Work_Content = workFlow.Work_Content;
+                        work.Work_Status = workFlow.Work_Status;
+                        DbEntities.Entry(work).State = EntityState.Modified;
+                        DbEntities.SaveChanges();
+                    }
                 }
+                strMsg.Append("修改成功");
             }
-            return work;
+            catch (Exception ex)
+            {
+                strMsg.AppendFormat("修改失败:{0}", ex.Message);
+            }
+            return strMsg.ToString();
+
         }
     }
 }
