@@ -14,7 +14,7 @@ app.config(function ($provide) {
 app.controller('WorkFlow', function ($scope) {
     var workFlow = "";
     $.ajax({
-        url: "http://10.211.53.211:1314/work/getWorkFlow/30568",
+        url: "http://10.211.52.112:1314/work/getWorkFlow/30568",
         type: "get",
         async: false,
         success: function (data) {

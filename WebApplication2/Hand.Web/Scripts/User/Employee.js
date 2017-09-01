@@ -14,7 +14,7 @@ app.config(function ($provide) {
 app.controller('MainCtrl', function ($scope) {
     var employee = "";
     $.ajax({
-        url: "http://10.211.53.211:1314/user/getEmp",
+        url: "http://10.211.52.112:1314/user/getEmp",
         type: "get",
         async: false,
         success: function (data) {
