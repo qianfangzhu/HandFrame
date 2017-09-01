@@ -49,6 +49,7 @@ namespace Hand.WebAPI.Controllers
         /// 员工的编辑
         /// </summary>
         /// <returns></returns>
+        [HttpOptions]
         [HttpPut]
         [Route("edit/{empId}")]
         public IHttpActionResult UpdateEmp(int? empId, employee emp)
@@ -79,6 +80,7 @@ namespace Hand.WebAPI.Controllers
         /// </summary>
         /// <param name="empId">用户Id</param>
         /// <returns></returns>
+        [HttpOptions]
         [HttpPut]
         [Route("delete/{empId}")]
         public IHttpActionResult DeleteEmp(int? empId)

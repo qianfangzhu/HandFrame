@@ -56,6 +56,7 @@ namespace Hand.WebAPI.Controllers
         /// <param name="workFlow">工作流实体</param>
         /// <returns></returns>
         [Route("edit/{workId}")]
+        [HttpOptions]
         [HttpPut]
         public IHttpActionResult EditWorkFlow(int? workId, WorkFlow workFlow)
         {
