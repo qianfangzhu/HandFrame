@@ -75,12 +75,5 @@ namespace Hand.Web.Controllers
             ViewBag.EmpId = empId;
             return View();
         }
-
-        public ActionResult TestNo()
-        {
-            Employee emp = new Employee();
-            var testNo = emp.AutoGengerEmpNo();
-            return Json(testNo, JsonRequestBehavior.AllowGet);
-        }
     }
 }
