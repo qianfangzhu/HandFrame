@@ -65,8 +65,22 @@ namespace Hand.Web.Controllers
         /// <returns></returns>
         public ActionResult EditEmployee(int? empId)
         {
+            ViewBag.SelectItem = new List<SelectListItem>
+            {
+                new SelectListItem {Text="请选择",Value="0" },
+                new SelectListItem {Text="技术支持",Value="1" },
+                new SelectListItem {Text="开发组长",Value="2" },
+                new SelectListItem {Text="项目经理",Value="3" }
+            };
             ViewBag.EmpId = empId;
             return View();
+        }
+
+        public ActionResult TestNo()
+        {
+            Employee emp = new Employee();
+            var testNo = emp.AutoGengerEmpNo();
+            return Json(testNo, JsonRequestBehavior.AllowGet);
         }
     }
 }

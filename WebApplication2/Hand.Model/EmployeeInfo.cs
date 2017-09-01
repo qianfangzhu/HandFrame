@@ -15,7 +15,7 @@
         /// <summary>
         /// 员工编号
         /// </summary>
-        public int EmpNo { get; set; }
+        public string EmpNo { get; set; }
 
         /// <summary>
         /// 员工姓名

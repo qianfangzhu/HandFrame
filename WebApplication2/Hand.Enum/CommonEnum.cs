@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel;
 namespace Hand.Enum
 {
     /// <summary>
@@ -32,14 +26,34 @@ namespace Hand.Enum
     {
         //已通过
         [Description("已通过")]
-        HavePassed=0,
+        HavePassed = 0,
 
         //已驳回
         [Description("已驳回")]
-        Rejected=1,
+        Rejected = 1,
 
         //审批中
         [Description("审批中")]
-        Approval=2
+        Approval = 2
+    }
+
+    /// <summary>
+    /// 朱乾方
+    /// 20170901
+    /// 员工角色
+    /// </summary>
+    public enum ResponseEnum
+    {
+        //技术支持
+        [Description("技术支持")]
+        TechnicalSupport = 1,
+
+        //开发组长
+        [Description("开发组长")]
+        DevLead = 2,
+
+        //项目经理
+        [Description("项目经理")]
+        ProjectManager = 3
     }
 }

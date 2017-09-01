@@ -57,7 +57,7 @@ namespace Hand.Business
                            select new EmployeeInfo
                            {
                                EmpId = emp.emp_id,
-                               EmpNo = emp.emp_No,
+                               EmpNo = emp.emp_No.ToString("00000"),
                                EmpName = emp.emp_name,
                                EmpMobile = emp.emp_mobile,
                                EmpEmail = emp.emp_email,
@@ -85,7 +85,7 @@ namespace Hand.Business
                 {
                     employee employee = new employee
                     {
-                        emp_No = emp.emp_No,
+                        emp_No = AutoGengerEmpNo() + 1,
                         emp_name = emp.emp_name,
                         emp_email = emp.emp_email,
                         emp_mobile = emp.emp_mobile,
@@ -123,7 +123,7 @@ namespace Hand.Business
                            select new EmployeeInfo
                            {
                                EmpId = emp.emp_id,
-                               EmpNo = emp.emp_No,
+                               EmpNo = emp.emp_No.ToString("00000"),
                                EmpName = emp.emp_name,
                                EmpMobile = emp.emp_mobile,
                                EmpEmail = emp.emp_email,
@@ -209,6 +209,21 @@ namespace Hand.Business
             }
 
             return strMsg.ToString();
+        }
+
+        /// <summary>
+        /// 朱乾方
+        /// 20170901
+        /// 自动生成员工工号
+        /// </summary>
+        /// <returns></returns>
+        public int AutoGengerEmpNo()
+        {
+            var empNo = (from emp in DbEntities.employee
+                         group emp by emp.emp_id
+                into c
+                         select c.Max(e => e.emp_No)).FirstOrDefault();
+            return empNo;
         }
     }
 }
