@@ -56,3 +56,4 @@ F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.xml
 F:\testFrame\WebApplication2\Hand.Model\bin\Debug\EntityFramework.SqlServer.xml
 F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.dll
 F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.pdb
+F:\testFrame\WebApplication2\Hand.Model\obj\Debug\Hand.Model.csprojResolveAssemblyReference.cache
