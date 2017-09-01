@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using Hand.Model;
 using Hand.Enum;
@@ -224,6 +225,53 @@ namespace Hand.Business
                 into c
                          select c.Max(e => e.emp_No)).FirstOrDefault();
             return empNo;
+        }
+
+        /// <summary>
+        /// 朱乾方
+        /// 20170901
+        /// 注册账号(md5加密)
+        /// </summary>
+        /// <param name="empNo">员工工号</param>
+        /// <param name="pwd">用户密码</param>
+        /// <returns></returns>
+        public string RegisteredAccount(int? empNo, string pwd)
+        {
+            var strMsg = new StringBuilder();
+            try
+            {
+                var empInfo = (from emp in DbEntities.employee
+                               where emp.emp_No == empNo
+                               select emp).FirstOrDefault();
+                if (empInfo != null)
+                {
+                    #region md5加密
+
+                    if (!string.IsNullOrEmpty(pwd))
+                    {
+                        string password = pwd;
+                        MD5 md5 = MD5.Create(); //实例化一个md5对像
+                        byte[] p = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+                        empInfo.emp_pwd = Convert.ToBase64String(p);
+                        DbEntities.Entry(empInfo).State = System.Data.Entity.EntityState.Modified;
+                        DbEntities.SaveChanges();
+                        strMsg.AppendFormat("注册成功");
+                    }
+
+                    #endregion
+                }
+                else
+                {
+                    strMsg.AppendFormat("该员工不存在");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                strMsg.AppendFormat("注册失败:{0}", ex.Message);
+            }
+
+            return strMsg.ToString();
         }
     }
 }

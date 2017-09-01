@@ -88,5 +88,23 @@ namespace Hand.WebAPI.Controllers
             var emp = Emp.DeleteEmp(empId);
             return Ok(emp);
         }
+
+        /// <summary>
+        /// 朱乾方
+        /// 20170901
+        /// 员工注册账号
+        /// </summary>
+        /// <param name="empNo">员工工号</param>
+        /// <param name="pwd">员工密码</param>
+        /// <returns></returns>
+        [Route("/account/{empNo}/{pwd}")]
+        [HttpOptions]
+        [HttpPut]
+        public IHttpActionResult Account(int? empNo, string pwd)
+        {
+            Employee emp = new Employee();
+            var reg = emp.RegisteredAccount(empNo, pwd);
+            return Ok(reg);
+        }
     }
 }
